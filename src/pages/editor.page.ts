@@ -1,6 +1,10 @@
 import { Page, Locator } from '@playwright/test';
 import { URLS } from '../common/urls';
 
+// Editor page abstraction following the Page Object Model (POM) pattern.
+// Provides reusable methods for interacting with the editor canvas,
+// components, and site content, improving maintainability and test clarity.
+
 export class EditorPage {
 
   readonly canvasLocator : Locator;
@@ -22,13 +26,16 @@ export class EditorPage {
     return this.page.url().includes(URLS.EDITOR_PAGE);
   }
 
+  // Drags a component from the side section onto the editor canvas.
   async dragAndDropComponentToCanvas(componentName: string) {
+    // Get bounding box of the canvas to determine drop position.
     const box = await this.canvasLocator.boundingBox();
 
     if (!box) {
       throw new Error('Canvas not visible');
     }
 
+    // Perform drag-and-drop action. Added targetPosition to drop at bottom center of canvas.
     await this.sideSectionComponent(componentName).dragTo(
       this.canvasLocator,
       {
@@ -42,9 +49,7 @@ export class EditorPage {
     await this.page.waitForTimeout(300);
   }
 
-
   async getNumberOfComponentsOnCanvas(): Promise<number> {
-    await this.page.waitForTimeout(3000);
     return await this.componentsOnCanvas.count();
   }
 
@@ -58,18 +63,19 @@ export class EditorPage {
     return await this.defaultHeader.textContent() || '';
   }
 
+  // Deletes a component from the canvas based on its index.
   async deleteComponentFromCanvas(componentIndex: number) {
-    const box = await this.canvasLocator.boundingBox();
-
-    if (!box) {
-      throw new Error('Canvas not visible');
-    }
     const component = this.componentsOnCanvas.nth(componentIndex);
     await component.scrollIntoViewIfNeeded();
+    // Click at position (1,1) to avoid overlapping the delete button with other UI elements.
     await component.click({
-      position: { x: box.width / 2, y: box.height - 10 }
+      position: { x: 1, y: 1 }
     });
 
     await this.componentDeleteButton.click();
+  }
+
+  async isCanvasVisible(): Promise<boolean> {
+    return await this.canvasLocator.isVisible();
   }
 }

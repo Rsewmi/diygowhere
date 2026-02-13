@@ -1,6 +1,11 @@
 import { Page, Locator } from '@playwright/test';
 import { URLS } from '../common/urls';
 
+// Page Object Model for the Login page.
+// Encapsulates login-related locators and actions,
+// keeping authentication flows reusable and
+// separate from test logic.
+
 export class LoginPage {
 
   readonly emailInput: Locator;

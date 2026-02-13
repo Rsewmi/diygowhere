@@ -22,14 +22,15 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  /* Adding only 1 worker since the same user can be logged in once. */
+  workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   use: {
       ...devices['Desktop Chrome'],
       trace: 'on-first-retry',
       headless: false,
+      viewport: { width: 1800, height: 950 },
       launchOptions: {
         slowMo: 3000
       }

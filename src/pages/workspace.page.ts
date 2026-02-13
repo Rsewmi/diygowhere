@@ -1,6 +1,10 @@
 import { Page, Locator } from '@playwright/test';
 import { URLS } from '../common/urls';
 
+// Page Object Model for the New Workspace creation page.
+// Encapsulates workspace setup actions such as naming,
+// style selection, and workspace creation.
+
 export class NewWorkspacePage {
 
   readonly sitenameInput: Locator;

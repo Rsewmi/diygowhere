@@ -4,6 +4,10 @@ import { DashboardPage } from '../pages/dashboard.page';
 import { NewWorkspacePage } from '../pages/workspace.page';
 import { EditorPage } from '../pages/editor.page';
 
+// Defines custom fixtures for injecting Page Object Models into tests.
+// Improves readability, reuse, and maintainability by avoiding
+// repeated page object instantiation in test files.
+
 type ObjectFixtures = {
   loginPage: LoginPage;
   dashboardPage: DashboardPage;

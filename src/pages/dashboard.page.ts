@@ -1,6 +1,10 @@
 import { Locator, Page } from '@playwright/test';
 import { URLS } from '../common/urls';
 
+// Dashboard page abstraction following the Page Object Model (POM) pattern.
+// Centralizes selectors and user actions to improve readability,
+// reduce duplication, and isolate UI changes from test logic.
+
 export class DashboardPage {
 
   readonly blankSiteButton : Locator

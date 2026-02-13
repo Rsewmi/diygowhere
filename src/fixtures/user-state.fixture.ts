@@ -1,6 +1,10 @@
 import { objectTest } from './object.fixture';
 import {users} from '../data/user.data';
 
+// Authentication fixture layer.
+// Automates login and establishes a reusable logged-in state,
+// enabling faster and more maintainable end-to-end tests.
+
 type UserStateFixtures = {
   loggedUser: void;
 };
