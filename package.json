@@ -1,0 +1,30 @@
+{
+  "name": "int-playwright-node",
+  "version": "1.0.0",
+  "description": "Sample project to learn playwright with nodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rsewmi/int-playwright-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "hhttps://github.com/Rsewmi/int-playwright-node/issues"
+  },
+  "homepage": "https://github.com/Rsewmi/int-playwright-node#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}
