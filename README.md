@@ -111,6 +111,6 @@ npx playwright test --project=uat --headed
 ### Learning Agility & Tech Stack Transition
   While I bring 8+ years of experience in the Java/Selenium and Kotlin ecosystem, I intentionally chose to implement this suite using Playwright and TypeScript.
 
-  My goal was to demonstrate rapid technical pivot and mastery of a modern stack. In less than a week, I deep-dived into Playwright-native patterns to ensure the implementation follows industry best practices:
+  My goal was to demonstrate rapid technical pivot and mastery of a modern stack. Within a short timeframe, I deep-dived into Playwright-native patterns to ensure the implementation follows industry best practices:
   - **Dependency Injection via Fixtures**: Moving away from linear hooks to modular, isolated test contexts.
   - **Asynchronous Architecture**: Leveraging Playwright’s native async/await driven events, ensuring the framework handles UI state changes more reliably than legacy blocking drivers.
