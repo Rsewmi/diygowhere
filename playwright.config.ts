@@ -16,8 +16,8 @@ dotenv.config({ path: path.resolve(__dirname, `.env.${env}`) });
  */
 export default defineConfig({
   testDir: './tests',
-  /* Run tests in files in parallel */
-  fullyParallel: true,
+  /* Changes whether the tests in files run in parallel */
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -28,7 +28,7 @@ export default defineConfig({
   reporter: 'html',
   use: {
       ...devices['Desktop Chrome'],
-      trace: 'on-first-retry',
+      trace: 'retain-on-failure',
       headless: false,
       viewport: { width: 1800, height: 950 },
       launchOptions: {

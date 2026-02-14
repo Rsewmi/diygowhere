@@ -45,7 +45,7 @@ export class EditorPage {
         }
       }
     );
-
+    // Wait briefly to allow the component to be added to the canvas before proceeding.
     await this.page.waitForTimeout(300);
   }
 

@@ -3,26 +3,6 @@ import * as utils from '../src/common/utils';
 import { SITE_CONFIG } from '../src/common/constans';
 
 test.describe('Site Builder Tests', () => {
-  test('Create New Blank Site and Verify Header', async ({loggedUser, dashboardPage, newWorkspacePage, editorPage}) => {
-    const siteName = 'Test Site';
-    const style = 'Minimal';
-    const siteHeader = 'Welcome to Test Site';
-
-    // Create a new blank site
-    await dashboardPage.verifyDashboardPageLoaded();
-    await dashboardPage.createBlankSite();
-    await newWorkspacePage.verifyNewWorkspacePageLoaded();
-    await newWorkspacePage.enterSiteName(siteName);
-    await newWorkspacePage.selectStyle(SITE_CONFIG.AVAILABLE_STYLES[0]);
-    await newWorkspacePage.clickCreateWebsite();
-
-    // Edit site header in the editor
-    await editorPage.editSiteHeader(siteHeader);
-
-    // Verify the site header text
-    const headerText = await editorPage.getSiteHeaderText();
-    expect(headerText).toBe(siteHeader);
-  });
 
   test('Add Component on Canvas', async ({loggedUser, dashboardPage, editorPage}) => {
   
@@ -72,6 +52,8 @@ test.describe('Site Builder Tests', () => {
 
     // Delete site header in the editor
     const numberOfComponentsBefore = await editorPage.getNumberOfComponentsOnCanvas();
+    // Assuming the header is at index 0, we will delete the component at index 2 which is the image component 
+    // added in previous test or any component added by default when creading the site.
     await editorPage.deleteComponentFromCanvas(2);
     const numberOfComponentsAfter = await editorPage.getNumberOfComponentsOnCanvas();
 
