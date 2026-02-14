@@ -1,41 +1,41 @@
 import { test, expect } from '../src/fixtures';
 import * as utils from '../src/common/utils';
+import { SITE_CONFIG } from '../src/common/constans';
 
 test.describe('Site Builder Tests', () => {
-//   test('Create New Blank Site and Verify Header', async ({loggedUser, dashboardPage, newWorkspacePage, editorPage}) => {
-//     const siteName = 'Test Site';
-//     const style = 'Minimal';
-//     const siteHeader = 'Welcome to Test Site';
+  test('Create New Blank Site and Verify Header', async ({loggedUser, dashboardPage, newWorkspacePage, editorPage}) => {
+    const siteName = 'Test Site';
+    const style = 'Minimal';
+    const siteHeader = 'Welcome to Test Site';
 
-//     // Create a new blank site
-//     await dashboardPage.verifyDashboardPageLoaded();
-//     await dashboardPage.createBlankSite();
-//     await newWorkspacePage.verifyNewWorkspacePageLoaded();
-//     await newWorkspacePage.enterSiteName(siteName);
-//     await newWorkspacePage.selectStyle(style);
-//     await newWorkspacePage.clickCreateWebsite();
+    // Create a new blank site
+    await dashboardPage.verifyDashboardPageLoaded();
+    await dashboardPage.createBlankSite();
+    await newWorkspacePage.verifyNewWorkspacePageLoaded();
+    await newWorkspacePage.enterSiteName(siteName);
+    await newWorkspacePage.selectStyle(SITE_CONFIG.AVAILABLE_STYLES[0]);
+    await newWorkspacePage.clickCreateWebsite();
 
-//     // Edit site header in the editor
-//     await editorPage.editSiteHeader(siteHeader);
+    // Edit site header in the editor
+    await editorPage.editSiteHeader(siteHeader);
 
-//     // Verify the site header text
-//     const headerText = await editorPage.getSiteHeaderText();
-//     expect(headerText).toBe(siteHeader);
-//   });
+    // Verify the site header text
+    const headerText = await editorPage.getSiteHeaderText();
+    expect(headerText).toBe(siteHeader);
+  });
 
   test('Add Component on Canvas', async ({loggedUser, dashboardPage, editorPage}) => {
-    const componentName = 'Image';
-
+  
     // Create a new blank site first to access the editor
     const siteName = 'test govtech';
 
     await dashboardPage.openSiteDashboard(siteName);
     expect(await editorPage.isEditorPageLoaded()).toBeTruthy();
-    expect(await editorPage.getNumberOfComponentsOnCanvas()).toBeGreaterThan(0);
+    expect(await editorPage.isCanvasVisible()).toBeTruthy();
 
     // Add component to canvas
     const numberOfComponentsBefore = await editorPage.getNumberOfComponentsOnCanvas();
-    await editorPage.dragAndDropComponentToCanvas(componentName);
+    await editorPage.dragAndDropComponentToCanvas(SITE_CONFIG.COMPONENTS.IMAGE);
     const numberOfComponentsAfter = await editorPage.getNumberOfComponentsOnCanvas();
     
     // Verify component is added

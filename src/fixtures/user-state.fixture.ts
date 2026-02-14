@@ -13,7 +13,7 @@ export const userStateTest = objectTest.extend<UserStateFixtures>({
   loggedUser: async ({ loginPage }, use) => {   
     await loginPage.goto();
     await loginPage.clickLoginButton();
-    await loginPage.enterEmail("test_sewmi@gowhere.gov.sg");
+    await loginPage.enterEmail(users.standardUser.email);
     await loginPage.clickSecondaryLoginButton();
     await use();
   },
