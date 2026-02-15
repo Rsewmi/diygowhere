@@ -86,6 +86,15 @@ The framework is configured to provide detailed diagnostic data to speed up root
 
 ## Running the Tests
 
+Clone the project:
+```bash
+git clone https://github.com/Rsewmi/diygowhere.git
+```
+Navigate inside and create `.env` file for `uat` environment:
+```bash
+cd diygowhere
+touch .env.uat
+```
 Install dependencies:
 ```bash
 npm install
