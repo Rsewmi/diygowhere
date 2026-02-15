@@ -27,7 +27,7 @@ The suite is configured for seamless switching between **Dev** and **UAT** envir
 
 - ### Intelligence in Execution
   - **Worker Serialization**: Configured to `workers: 1` to ensure stable session handling in the environment, preventing session collisions.
-  - **Web-First Assertions**: Leverages Playwright’s auto-waiting and actionability checks to eliminate the need for brittle manual waits (e.g., `Thread.sleep`).
+  - **Web-First Assertions**: It uses Playwright’s auto-waiting to fix flaky tests and remove the need for manual delays. (e.g., `Thread.sleep`).
 
 ---
 
